@@ -3,65 +3,72 @@ import matplotlib.pyplot as plt
 plt.style.use('default')
 plt.style.use('oneHalfColumn.mplstyle')
 
-base_folder = "/home/dventuri/run/"
-cases = ["sp_5x5_CoU",
-         "sp_5x5_CoU_forced",
-         "sp_5x5_CoU_forced_evap",
-         "sp_5x5_CoF",
-         "sp_5x5_CoF_forced",
-         "sp_5x5_CoF_forced_evap",
-         "sp_3x3_CoU_forced",
-         "sp_3x3_CoU_forced_evap",
-         "sp_3x3_CoF_forced",
-         "sp_3x3_CoF_forced_evap"]#,
-         #"sp30m_5x5_CoU_forced",
-         #"sp30m_5x5_CoF_forced"]
 
-for case in cases:
+def calculate_line_statistics(case_name: str, probe_number: int) -> tuple:
 
-    line01_mean = []
-    line01_std = []
-    line02_mean = []
-    line02_std = []
+    n_points_per_line = 101
 
-    for i in range(1,102):
-        fn = base_folder+case+f"/probe_points/surf00001_sonda00{i:03d}.dat"
+    mean = ()
+    std = ()
+
+    for i in range(1,n_points_per_line+1):
+        fn = f"{case_name}/probe_points/surf{probe_number:05d}_sonda{i:05d}.dat"
         data = np.loadtxt(fn, delimiter="   ", usecols=11)
-        line01_mean.append(np.mean(data))
-        line01_std.append(np.std(data))
+        mean.append(np.mean(data))
+        std.append(np.std(data))
 
-    for i in range(1,102):
-        fn = base_folder+case+f"/probe_points/surf00002_sonda00{i:03d}.dat"
-        data = np.loadtxt(fn, delimiter="   ", usecols=11)
-        line02_mean.append(np.mean(data))
-        line02_std.append(np.std(data))
+    return mean, std
 
+
+def plot_statistics(mean, std, id):
     x = np.linspace(-0.3207, 0.3207, 101)
 
     fig, ax = plt.subplots()
     ax.set_ylabel(r'$d_{droplet}$')
     ax.set_xlabel(r'$x$')
-    ax.set_title(case)
+    #ax.set_title(case)
     ax.axis([-0.3207, 0.3207, 0, 1.5e-3])
     ax.xaxis.set_major_locator(plt.MultipleLocator(0.1))
     ax.xaxis.set_minor_locator(plt.MultipleLocator(0.025))
     ax.yaxis.set_major_locator(plt.MultipleLocator(0.25e-3))
     ax.yaxis.set_minor_locator(plt.MultipleLocator(0.125e-3))
-    ax.errorbar(x,line01_mean, yerr=line01_std,
+    ax.errorbar(x,mean, yerr=std,
                 color='black',
                 linewidth=1,
                 linestyle='-',
                 label='line01')
-    ax.errorbar(x,line02_mean, yerr=line02_std,
-                color='blue',
-                linewidth=1,
-                linestyle='-',
-                label='line02')
     ax.legend(loc='best')
     ax.vlines(0, 0, 0.0015, colors='grey', linestyles='dashed')
     ax.vlines(0.1390171932, 0, 0.0015, colors='grey', linestyles='dashed')
     ax.vlines(-0.1390171932, 0, 0.0015, colors='grey', linestyles='dashed')
     fig.tight_layout(pad=0.01)
-    plt.savefig(f'figures/{case}.png',
-                format='png',
-                dpi=300)
+    # plt.savefig(f'figures/{case}.png',
+    #             format='png',
+    #             dpi=300)
+
+
+def main():
+    base_folder = "/home/dventuri/run/"
+    cases = ["sp_5x5_CoU",
+             "sp_5x5_CoU_forced",
+             "sp_5x5_CoU_forced_evap",
+             "sp_5x5_CoF",
+             "sp_5x5_CoF_forced",
+             "sp_5x5_CoF_forced_evap",
+             "sp_3x3_CoU_forced",
+             "sp_3x3_CoU_forced_evap",
+             "sp_3x3_CoF_forced",
+             "sp_3x3_CoF_forced_evap"
+            ]
+
+    n_probe_lines = 60
+
+    for case in cases:
+        for n in range(1,n_probe_lines+1):
+            mean, std = calculate_line_statistics(f"{base_folder}{case}", n)
+
+            plot_statistics(mean, std)
+
+
+if __name__ == "__main__":
+    main()
