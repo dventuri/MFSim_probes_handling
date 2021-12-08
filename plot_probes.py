@@ -4,26 +4,34 @@ plt.style.use('default')
 plt.style.use('oneHalfColumn.mplstyle')
 
 
-def calculate_line_statistics(case_name: str, probe_number: int) -> tuple:
+def calculate_line_statistics(case_name: str, probe_number: int):
 
     n_points_per_line = 101
 
-    mean = ()
-    std = ()
+    mean = []
+    std = []
 
     for i in range(1,n_points_per_line+1):
-        fn = f"{case_name}/probe_points/surf{probe_number:05d}_sonda{i:05d}.dat"
-        data = np.loadtxt(fn, delimiter="   ", usecols=11)
+        fn = f"{case_name}/output/probe_points/surf{probe_number:05d}_sonda{i:05d}.dat"
+        idx, data = np.loadtxt(fn,
+                               delimiter="   ",
+                               usecols=(1,11),
+                               unpack=True)
+        idx = idx[::-1]
+        data = data[::-1]
+
+        unique, unique_idx = np.unique(idx, return_index=True)
+        data = data[unique_idx]
+
         mean.append(np.mean(data))
         std.append(np.std(data))
 
     return mean, std
 
 
-def plot_statistics(mean, std, id):
+def plot_statistics(mean, std, fig, ax):
     x = np.linspace(-0.3207, 0.3207, 101)
 
-    fig, ax = plt.subplots()
     ax.set_ylabel(r'$d_{droplet}$')
     ax.set_xlabel(r'$x$')
     #ax.set_title(case)
@@ -49,26 +57,28 @@ def plot_statistics(mean, std, id):
 
 def main():
     base_folder = "/home/dventuri/run/"
-    cases = ["sp_5x5_CoU",
-             "sp_5x5_CoU_forced",
+    cases = [#"sp_5x5_CoU",
+             #"sp_5x5_CoU_forced",
              "sp_5x5_CoU_forced_evap",
-             "sp_5x5_CoF",
-             "sp_5x5_CoF_forced",
-             "sp_5x5_CoF_forced_evap",
-             "sp_3x3_CoU_forced",
-             "sp_3x3_CoU_forced_evap",
-             "sp_3x3_CoF_forced",
-             "sp_3x3_CoF_forced_evap"
+             #"sp_5x5_CoF",
+             #"sp_5x5_CoF_forced",
+             #"sp_5x5_CoF_forced_evap",
+             #"sp_3x3_CoU_forced",
+             #"sp_3x3_CoU_forced_evap",
+             #"sp_3x3_CoF_forced",
+             #"sp_3x3_CoF_forced_evap"
             ]
 
-    n_probe_lines = 60
+    n_probe_lines = 10
 
     for case in cases:
+        fig, ax = plt.subplots()
         for n in range(1,n_probe_lines+1):
             mean, std = calculate_line_statistics(f"{base_folder}{case}", n)
 
-            plot_statistics(mean, std)
+            plot_statistics(mean, 0, fig, ax)
 
+    #list for linestyles and linecolors?
 
 if __name__ == "__main__":
     main()
