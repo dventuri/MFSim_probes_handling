@@ -29,7 +29,7 @@ def calculate_line_statistics(case_name: str, probe_number: int):
     return mean, std
 
 
-def plot_statistics(mean, std, fig, ax):
+def plot_statistics(mean, std, ax, lc, ls):
     x = np.linspace(-0.3207, 0.3207, 101)
 
     ax.set_ylabel(r'$d_{droplet}$')
@@ -41,18 +41,14 @@ def plot_statistics(mean, std, fig, ax):
     ax.yaxis.set_major_locator(plt.MultipleLocator(0.25e-3))
     ax.yaxis.set_minor_locator(plt.MultipleLocator(0.125e-3))
     ax.errorbar(x,mean, yerr=std,
-                color='black',
+                color=lc,
                 linewidth=1,
-                linestyle='-',
+                linestyle=ls,
                 label='line01')
     ax.legend(loc='best')
     ax.vlines(0, 0, 0.0015, colors='grey', linestyles='dashed')
     ax.vlines(0.1390171932, 0, 0.0015, colors='grey', linestyles='dashed')
     ax.vlines(-0.1390171932, 0, 0.0015, colors='grey', linestyles='dashed')
-    fig.tight_layout(pad=0.01)
-    # plt.savefig(f'figures/{case}.png',
-    #             format='png',
-    #             dpi=300)
 
 
 def main():
@@ -71,12 +67,42 @@ def main():
 
     n_probe_lines = 10
 
+    linecolors = [
+        'black',
+        'gray',
+        'blue',
+        'magenta',
+        'green',
+        'black',
+        'gray',
+        'blue',
+        'magenta',
+        'green'
+    ]
+
+    linestyles = [
+        '-',
+        '-',
+        '-',
+        '-',
+        '-',
+        '--',
+        '--',
+        '--',
+        '--',
+        '--'
+    ]
+
     for case in cases:
         fig, ax = plt.subplots()
         for n in range(1,n_probe_lines+1):
             mean, std = calculate_line_statistics(f"{base_folder}{case}", n)
 
-            plot_statistics(mean, 0, fig, ax)
+            plot_statistics(mean, 0, ax, linecolors[n-1], linestyles[n-1])
+        fig.tight_layout(pad=0.01)
+        # plt.savefig(f'figures/{case}.png',
+        #             format='png',
+        #             dpi=300)
 
     #list for linestyles and linecolors?
 
