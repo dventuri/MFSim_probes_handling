@@ -35,7 +35,7 @@ def plot_statistics(mean, std, ax, lc, ls):
     ax.set_ylabel(r'$d_{droplet}$')
     ax.set_xlabel(r'$x$')
     #ax.set_title(case)
-    ax.axis([-0.3207, 0.3207, 0, 1.5e-3])
+    ax.axis([-0.3207, 0.3207, 0, 1.75e-3])
     ax.xaxis.set_major_locator(plt.MultipleLocator(0.1))
     ax.xaxis.set_minor_locator(plt.MultipleLocator(0.025))
     ax.yaxis.set_major_locator(plt.MultipleLocator(0.25e-3))
@@ -43,68 +43,27 @@ def plot_statistics(mean, std, ax, lc, ls):
     ax.errorbar(x,mean, yerr=std,
                 color=lc,
                 linewidth=1,
-                linestyle=ls,
-                label='line01')
+                linestyle=ls#,
+                #label='line01'
+                )
     ax.legend(loc='best')
-    ax.vlines(0, 0, 0.0015, colors='grey', linestyles='dashed')
-    ax.vlines(0.1390171932, 0, 0.0015, colors='grey', linestyles='dashed')
-    ax.vlines(-0.1390171932, 0, 0.0015, colors='grey', linestyles='dashed')
+    ax.vlines(0, 0, 0.00175, colors='grey', linestyles='dashed')
+    ax.vlines(0.1390171932, 0, 0.00175, colors='grey', linestyles='dashed')
+    ax.vlines(-0.1390171932, 0, 0.00175, colors='grey', linestyles='dashed')
 
 
 def main():
+
     base_folder = "/home/dventuri/run/"
-    cases = [#"sp_5x5_CoU",
-             #"sp_5x5_CoU_forced",
-             "sp_5x5_CoU_forced_evap",
-             #"sp_5x5_CoF",
-             #"sp_5x5_CoF_forced",
-             #"sp_5x5_CoF_forced_evap",
-             #"sp_3x3_CoU_forced",
-             #"sp_3x3_CoU_forced_evap",
-             #"sp_3x3_CoF_forced",
-             #"sp_3x3_CoF_forced_evap"
-            ]
+    case = 'sp_5x5_CoU_forced_evap'
 
-    n_probe_lines = 10
+    fig, ax = plt.subplots()
+    mean, std = calculate_line_statistics(f"{base_folder}{case}", 20)
+    plot_statistics(mean, 0, ax, 'black', '-')
+    mean, std = calculate_line_statistics(f"{base_folder}{case}", 50)
+    plot_statistics(mean, 0, ax, 'black', '-.')
+    fig.tight_layout(pad=0.01)
 
-    linecolors = [
-        'black',
-        'gray',
-        'blue',
-        'magenta',
-        'green',
-        'black',
-        'gray',
-        'blue',
-        'magenta',
-        'green'
-    ]
-
-    linestyles = [
-        '-',
-        '-',
-        '-',
-        '-',
-        '-',
-        '--',
-        '--',
-        '--',
-        '--',
-        '--'
-    ]
-
-    for case in cases:
-        fig, ax = plt.subplots()
-        for n in range(1,n_probe_lines+1):
-            mean, std = calculate_line_statistics(f"{base_folder}{case}", n)
-
-            plot_statistics(mean, 0, ax, linecolors[n-1], linestyles[n-1])
-        fig.tight_layout(pad=0.01)
-        # plt.savefig(f'figures/{case}.png',
-        #             format='png',
-        #             dpi=300)
-
-    #list for linestyles and linecolors?
 
 if __name__ == "__main__":
     main()
