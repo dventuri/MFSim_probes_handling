@@ -55,8 +55,9 @@ def plot_statistics(mean, std, ax, lc, ls):
 def main():
 
     base_folder = "/home/dventuri/run/"
+    
+    # Single plot
     case = 'sp_5x5_CoU_forced_evap'
-
     fig, ax = plt.subplots()
     mean, std = calculate_line_statistics(f"{base_folder}{case}", 20)
     plot_statistics(mean, 0, ax, 'black', '-')
