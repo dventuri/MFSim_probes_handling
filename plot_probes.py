@@ -33,7 +33,7 @@ def plot_statistics(mean, std, ax, lc, ls):
     x = np.linspace(-0.3207, 0.3207, 101)
 
     ax.set_ylabel(r'$d_{droplet}$')
-    ax.set_xlabel(r'$x$')
+    ax.set_xlabel(r'Line length')
     #ax.set_title(case)
     ax.axis([-0.3207, 0.3207, 0, 1.75e-3])
     ax.xaxis.set_major_locator(plt.MultipleLocator(0.1))
