@@ -29,12 +29,12 @@ def calculate_line_statistics(case_name: str, probe_number: int):
     return mean, std
 
 
-def plot_statistics(mean, std, ax, lc, ls):
+def plot_statistics(mean, std, ax, lc, ls, label):
     x = np.linspace(-0.3207, 0.3207, 101)
 
     ax.set_ylabel(r'$d_{droplet}$')
     ax.set_xlabel(r'Line length')
-    #ax.set_title(case)
+    # ax.set_title(case)
     ax.axis([-0.3207, 0.3207, 0, 1.75e-3])
     ax.xaxis.set_major_locator(plt.MultipleLocator(0.1))
     ax.xaxis.set_minor_locator(plt.MultipleLocator(0.025))
@@ -42,14 +42,15 @@ def plot_statistics(mean, std, ax, lc, ls):
     ax.yaxis.set_minor_locator(plt.MultipleLocator(0.125e-3))
     ax.errorbar(x,mean, yerr=std,
                 color=lc,
-                linewidth=1,
-                linestyle=ls#,
-                #label='line01'
-                )
+                linewidth=1.5,
+                linestyle=ls,
+                label=label)
     ax.legend(loc='best')
     ax.vlines(0, 0, 0.00175, colors='grey', linestyles='dashed')
     ax.vlines(0.1390171932, 0, 0.00175, colors='grey', linestyles='dashed')
     ax.vlines(-0.1390171932, 0, 0.00175, colors='grey', linestyles='dashed')
+
+    return ax
 
 
 def main():
