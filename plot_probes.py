@@ -57,15 +57,50 @@ def plot_statistics(mean, std, ax, lc, ls, label):
 def main():
 
     base_folder = "/home/dventuri/run/"
-    
-    # Single plot
-    case = 'sp_5x5_CoU_forced_evap'
-    fig, ax = plt.subplots()
-    mean, std = calculate_line_statistics(f"{base_folder}{case}", 20)
-    plot_statistics(mean, 0, ax, 'black', '-')
-    mean, std = calculate_line_statistics(f"{base_folder}{case}", 50)
-    plot_statistics(mean, 0, ax, 'black', '-.')
-    fig.tight_layout(pad=0.01)
+
+    ### Single plot
+    # case = 'sp_5x5_CoU_forced_evap'
+    # fig, ax = plt.subplots()
+    # mean, std = calculate_line_statistics(f"{base_folder}{case}", 20)
+    # plot_statistics(mean, 0, ax, 'black', '-')
+    # mean, std = calculate_line_statistics(f"{base_folder}{case}", 50)
+    # plot_statistics(mean, 0, ax, 'black', '-.')
+    # fig.tight_layout(pad=0.01)
+
+
+    ### Loop to plot all cases
+
+    cases = [#"sp_5x5_CoU",
+             #"sp_5x5_CoU_forced",
+             #"sp_5x5_CoU_forced_evap",
+             #"sp_5x5_CoF",
+             #"sp_5x5_CoF_forced",
+             "sp_5x5_CoF_forced_evap",
+             #"sp_3x3_CoU_forced",
+             #"sp_3x3_CoU_forced_evap",
+             #"sp_3x3_CoF_forced",
+             #"sp_3x3_CoF_forced_evap"
+            ]
+
+    probe_lines = [20, 50, 35]
+
+    linecolors = list(mcolors.TABLEAU_COLORS)
+
+    linestyles = ['-']*5 + ['-.']*5
+
+    labels = [r'$45\degree$', r'$135\degree$', 'S-N']
+
+    for case in cases:
+        fig, ax = plt.subplots()
+        for n, probe in enumerate(probe_lines):
+            mean, std = calculate_line_statistics(f"{base_folder}{case}", probe)
+
+            plot_statistics(mean, 0, ax, linecolors[n], linestyles[n], labels[n], case)
+        ax.set_title('5 sprays completo - 0,5 m')
+        fig.tight_layout(pad=0.01)
+        # plt.savefig(f'figures/{case}.png',
+        #             format='png',
+        #             dpi=300)
 
 
 if __name__ == "__main__":
