@@ -1,5 +1,6 @@
 import numpy as np
 import matplotlib.pyplot as plt
+import matplotlib.colors as mcolors
 plt.style.use('default')
 plt.style.use('oneHalfColumn.mplstyle')
 
