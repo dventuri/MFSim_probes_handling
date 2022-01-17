@@ -42,7 +42,7 @@ def calculate_line_statistics(case_name: str, probe_number: int):
     return mean, std
 
 
-def plot_line_statistics(mean, std, ax, lc, ls, label):
+def plot_line_statistics(mean, std, ax, lc, ls, label, aux_line_pos):
     x = np.linspace(-0.3207, 0.3207, 101)
 
     ax.set_ylabel(r'$d_{droplet}$')
@@ -59,8 +59,8 @@ def plot_line_statistics(mean, std, ax, lc, ls, label):
                 label=label)
     ax.legend(loc='best')
     ax.vlines(0, 0, 0.00175, colors='grey', linestyles='dashed')
-    ax.vlines(0.1390171932, 0, 0.00175, colors='grey', linestyles='dashed')
-    ax.vlines(-0.1390171932, 0, 0.00175, colors='grey', linestyles='dashed')
+    ax.vlines(aux_line_pos, 0, 0.00175, colors='grey', linestyles='dashed')
+    ax.vlines(-aux_line_pos, 0, 0.00175, colors='grey', linestyles='dashed')
 
     return ax
 
