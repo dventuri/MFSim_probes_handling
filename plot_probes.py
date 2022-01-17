@@ -112,14 +112,49 @@ def main():
                 dpi=300)
 
     ### Single plot
-    # case = 'sp_5x5_CoU_forced_evap'
-    # fig, ax = plt.subplots()
-    # mean, std = calculate_line_statistics(f"{base_folder}{case}", 20)
-    # plot_statistics(mean, 0, ax, 'black', '-')
-    # mean, std = calculate_line_statistics(f"{base_folder}{case}", 50)
-    # plot_statistics(mean, 0, ax, 'black', '-.')
-    # fig.tight_layout(pad=0.01)
+    case = 'sp_5x5_CoF_forced'
+    fig, ax = plt.subplots()
+    mean, std = calculate_line_statistics(case, 20)
+    plot_line_statistics(mean, 0, ax, 'black', '-', '', 0.1966)
+    mean, std = calculate_line_statistics(case, 50)
+    plot_line_statistics(mean, 0, ax, 'black', '-.', '', 0.1966)
+    fig.tight_layout(pad=0.01)
+    plt.savefig(f'figures/{case}_test.png',
+                format='png',
+                dpi=300)
 
+    case = 'sp_5x5_CoF_forced_evap'
+    fig, ax = plt.subplots()
+    mean, std = calculate_line_statistics(case, 20)
+    plot_line_statistics(mean, 0, ax, 'black', '-', '', 0.1966)
+    mean, std = calculate_line_statistics(case, 50)
+    plot_line_statistics(mean, 0, ax, 'black', '-.', '', 0.1966)
+    fig.tight_layout(pad=0.01)
+    plt.savefig(f'figures/{case}_test.png',
+                format='png',
+                dpi=300)
+
+    case = 'sp_3x3_CoF_forced'
+    fig, ax = plt.subplots()
+    mean, std = calculate_line_statistics(case, 20)
+    plot_line_statistics(mean, 0, ax, 'black', '-', '', 0.16)
+    mean, std = calculate_line_statistics(case, 50)
+    plot_line_statistics(mean, 0, ax, 'black', '-.', '', 0.16)
+    fig.tight_layout(pad=0.01)
+    plt.savefig(f'figures/{case}_test.png',
+                format='png',
+                dpi=300)
+
+    case = 'sp_3x3_CoF_forced_evap' # acima de 3000 somente
+    fig, ax = plt.subplots()
+    mean, std = calculate_line_statistics(case, 20, 3000)
+    plot_line_statistics(mean, 0, ax, 'black', '-', '', 0.16)
+    mean, std = calculate_line_statistics(case, 50, 3000)
+    plot_line_statistics(mean, 0, ax, 'black', '-.', '', 0.16)
+    fig.tight_layout(pad=0.01)
+    plt.savefig(f'figures/{case}_test.png',
+                format='png',
+                dpi=300)
 
     ### PROFILE PLOTS
     probe_lines = [20, 50, 35]
