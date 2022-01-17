@@ -11,15 +11,15 @@ PROBE = "/output/probe_points/"
 N_POINTS_PER_LINE = 101
 
 
-def read_data(case_name: str, probe_number: int, point_number: int):
+def read_data(case_name: str, probe_number: int, point_number: int, start:int = 0):
 
     fn = f"{HOME}{case_name}{PROBE}surf{probe_number:05d}_sonda{point_number:05d}.dat"
     idx, data = np.loadtxt(fn,
                            delimiter="   ",
                            usecols=(1,11),
                            unpack=True)
-    idx = idx[::-1]
-    data = data[::-1]
+    idx = idx[:start:-1]
+    data = data[:start:-1]
 
     unique, unique_idx = np.unique(idx, return_index=True)
     data = data[unique_idx]
@@ -27,14 +27,13 @@ def read_data(case_name: str, probe_number: int, point_number: int):
     return data
 
 
-def calculate_line_statistics(case_name: str, probe_number: int):
-
+def calculate_line_statistics(case_name: str, probe_number: int, start:int = 0):
 
     mean = []
     std = []
 
     for i in range(1,N_POINTS_PER_LINE+1):
-        data = read_data(case_name, probe_number, i)
+        data = read_data(case_name, probe_number, i, start)
 
         mean.append(np.mean(data))
         std.append(np.std(data))
