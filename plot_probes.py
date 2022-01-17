@@ -13,7 +13,6 @@ N_POINTS_PER_LINE = 101
 
 def read_data(case_name: str, probe_number: int, point_number: int):
 
-    #for i in range(1,N_POINTS_PER_LINE+1):
     fn = f"{HOME}{case_name}{PROBE}surf{probe_number:05d}_sonda{point_number:05d}.dat"
     idx, data = np.loadtxt(fn,
                            delimiter="   ",
