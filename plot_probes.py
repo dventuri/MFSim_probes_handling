@@ -115,44 +115,60 @@ def main():
     case = 'sp_5x5_CoF_forced'
     fig, ax = plt.subplots()
     mean, std = calculate_line_statistics(case, 20)
-    plot_line_statistics(mean, 0, ax, 'black', '-', '', 0.1966)
+    plot_line_statistics(mean, 0, ax, 'black', '-', '45', 0.1966)
     mean, std = calculate_line_statistics(case, 50)
-    plot_line_statistics(mean, 0, ax, 'black', '-.', '', 0.1966)
+    plot_line_statistics(mean, 0, ax, 'black', '-.', '135', 0.1966)
+    mean, std = calculate_line_statistics(case, 5)
+    plot_line_statistics(mean, 0, ax, 'blue', '-', '0', 0.1966)
+    mean, std = calculate_line_statistics(case, 35)
+    plot_line_statistics(mean, 0, ax, 'blue', '-.', '90', 0.1966)
     fig.tight_layout(pad=0.01)
-    plt.savefig(f'figures/{case}_test.png',
+    plt.savefig(f'figures/{case}.png',
                 format='png',
                 dpi=300)
 
     case = 'sp_5x5_CoF_forced_evap'
     fig, ax = plt.subplots()
     mean, std = calculate_line_statistics(case, 20)
-    plot_line_statistics(mean, 0, ax, 'black', '-', '', 0.1966)
+    plot_line_statistics(mean, 0, ax, 'black', '-', '45', 0.1966)
     mean, std = calculate_line_statistics(case, 50)
-    plot_line_statistics(mean, 0, ax, 'black', '-.', '', 0.1966)
+    plot_line_statistics(mean, 0, ax, 'black', '-.', '135', 0.1966)
+    mean, std = calculate_line_statistics(case, 5)
+    plot_line_statistics(mean, 0, ax, 'blue', '-', '0', 0.1966)
+    mean, std = calculate_line_statistics(case, 35)
+    plot_line_statistics(mean, 0, ax, 'blue', '-.', '90', 0.1966)
     fig.tight_layout(pad=0.01)
-    plt.savefig(f'figures/{case}_test.png',
+    plt.savefig(f'figures/{case}.png',
                 format='png',
                 dpi=300)
 
     case = 'sp_3x3_CoF_forced'
     fig, ax = plt.subplots()
     mean, std = calculate_line_statistics(case, 20)
-    plot_line_statistics(mean, 0, ax, 'black', '-', '', 0.16)
+    plot_line_statistics(mean, 0, ax, 'black', '-', '45', 0.16)
     mean, std = calculate_line_statistics(case, 50)
-    plot_line_statistics(mean, 0, ax, 'black', '-.', '', 0.16)
+    plot_line_statistics(mean, 0, ax, 'black', '-.', '135', 0.16)
+    mean, std = calculate_line_statistics(case, 5)
+    plot_line_statistics(mean, 0, ax, 'blue', '-', '0', 0.16)
+    mean, std = calculate_line_statistics(case, 35)
+    plot_line_statistics(mean, 0, ax, 'blue', '-.', '90', 0.16)
     fig.tight_layout(pad=0.01)
-    plt.savefig(f'figures/{case}_test.png',
+    plt.savefig(f'figures/{case}.png',
                 format='png',
                 dpi=300)
 
     case = 'sp_3x3_CoF_forced_evap' # acima de 3000 somente
     fig, ax = plt.subplots()
     mean, std = calculate_line_statistics(case, 20, 3000)
-    plot_line_statistics(mean, 0, ax, 'black', '-', '', 0.16)
+    plot_line_statistics(mean, 0, ax, 'black', '-', '45', 0.16)
     mean, std = calculate_line_statistics(case, 50, 3000)
-    plot_line_statistics(mean, 0, ax, 'black', '-.', '', 0.16)
+    plot_line_statistics(mean, 0, ax, 'black', '-.', '135', 0.16)
+    mean, std = calculate_line_statistics(case, 5, 3000)
+    plot_line_statistics(mean, 0, ax, 'blue', '-', '0', 0.16)
+    mean, std = calculate_line_statistics(case, 35, 3000)
+    plot_line_statistics(mean, 0, ax, 'blue', '-.', '90', 0.16)
     fig.tight_layout(pad=0.01)
-    plt.savefig(f'figures/{case}_test.png',
+    plt.savefig(f'figures/{case}.png',
                 format='png',
                 dpi=300)
 
