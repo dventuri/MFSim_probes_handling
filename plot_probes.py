@@ -123,10 +123,70 @@ def main():
     mean, std = calculate_line_statistics(case, 35)
     plot_line_statistics(mean, 0, ax, 'blue', '-.', '90', 0.1966)
     fig.tight_layout(pad=0.01)
-    plt.savefig(f'figures/{case}.png',
+    plt.savefig(f'figures/{case}_05m.png',
                 format='png',
                 dpi=300)
 
+    case = 'sp_5x5_CoF_forced_evap'
+    fig, ax = plt.subplots()
+    mean, std = calculate_line_statistics(case, 16)
+    plot_line_statistics(mean, 0, ax, 'black', '-', '45', 0.1966)
+    mean, std = calculate_line_statistics(case, 46)
+    plot_line_statistics(mean, 0, ax, 'black', '-.', '135', 0.1966)
+    mean, std = calculate_line_statistics(case, 1)
+    plot_line_statistics(mean, 0, ax, 'blue', '-', '0', 0.1966)
+    mean, std = calculate_line_statistics(case, 31)
+    plot_line_statistics(mean, 0, ax, 'blue', '-.', '90', 0.1966)
+    fig.tight_layout(pad=0.01)
+    plt.savefig(f'figures/{case}_01m.png',
+                format='png',
+                dpi=300)
+    
+    case = 'sp_5x5_CoF_forced_evap'
+    fig, ax = plt.subplots()
+    mean, std = calculate_line_statistics(case, 17)
+    plot_line_statistics(mean, 0, ax, 'black', '-', '45', 0.1966)
+    mean, std = calculate_line_statistics(case, 47)
+    plot_line_statistics(mean, 0, ax, 'black', '-.', '135', 0.1966)
+    mean, std = calculate_line_statistics(case, 2)
+    plot_line_statistics(mean, 0, ax, 'blue', '-', '0', 0.1966)
+    mean, std = calculate_line_statistics(case, 32)
+    plot_line_statistics(mean, 0, ax, 'blue', '-.', '90', 0.1966)
+    fig.tight_layout(pad=0.01)
+    plt.savefig(f'figures/{case}_02m.png',
+                format='png',
+                dpi=300)
+    
+    case = 'sp_5x5_CoF_forced_evap'
+    fig, ax = plt.subplots()
+    mean, std = calculate_line_statistics(case, 18)
+    plot_line_statistics(mean, 0, ax, 'black', '-', '45', 0.1966)
+    mean, std = calculate_line_statistics(case, 48)
+    plot_line_statistics(mean, 0, ax, 'black', '-.', '135', 0.1966)
+    mean, std = calculate_line_statistics(case, 3)
+    plot_line_statistics(mean, 0, ax, 'blue', '-', '0', 0.1966)
+    mean, std = calculate_line_statistics(case, 33)
+    plot_line_statistics(mean, 0, ax, 'blue', '-.', '90', 0.1966)
+    fig.tight_layout(pad=0.01)
+    plt.savefig(f'figures/{case}_03m.png',
+                format='png',
+                dpi=300)
+    
+    case = 'sp_5x5_CoF_forced_evap'
+    fig, ax = plt.subplots()
+    mean, std = calculate_line_statistics(case, 19)
+    plot_line_statistics(mean, 0, ax, 'black', '-', '45', 0.1966)
+    mean, std = calculate_line_statistics(case, 49)
+    plot_line_statistics(mean, 0, ax, 'black', '-.', '135', 0.1966)
+    mean, std = calculate_line_statistics(case, 4)
+    plot_line_statistics(mean, 0, ax, 'blue', '-', '0', 0.1966)
+    mean, std = calculate_line_statistics(case, 34)
+    plot_line_statistics(mean, 0, ax, 'blue', '-.', '90', 0.1966)
+    fig.tight_layout(pad=0.01)
+    plt.savefig(f'figures/{case}_04m.png',
+                format='png',
+                dpi=300)
+    
     case = 'sp_5x5_CoF_forced_evap'
     fig, ax = plt.subplots()
     mean, std = calculate_line_statistics(case, 20)
@@ -138,7 +198,67 @@ def main():
     mean, std = calculate_line_statistics(case, 35)
     plot_line_statistics(mean, 0, ax, 'blue', '-.', '90', 0.1966)
     fig.tight_layout(pad=0.01)
-    plt.savefig(f'figures/{case}.png',
+    plt.savefig(f'figures/{case}_05m.png',
+                format='png',
+                dpi=300)
+
+    case = 'sp_3x3_CoF_forced'
+    fig, ax = plt.subplots()
+    mean, std = calculate_line_statistics(case, 16)
+    plot_line_statistics(mean, 0, ax, 'black', '-', '45', 0.16)
+    mean, std = calculate_line_statistics(case, 46)
+    plot_line_statistics(mean, 0, ax, 'black', '-.', '135', 0.16)
+    mean, std = calculate_line_statistics(case, 1)
+    plot_line_statistics(mean, 0, ax, 'blue', '-', '0', 0.16)
+    mean, std = calculate_line_statistics(case, 31)
+    plot_line_statistics(mean, 0, ax, 'blue', '-.', '90', 0.16)
+    fig.tight_layout(pad=0.01)
+    plt.savefig(f'figures/{case}_01m.png',
+                format='png',
+                dpi=300)
+    
+    case = 'sp_3x3_CoF_forced'
+    fig, ax = plt.subplots()
+    mean, std = calculate_line_statistics(case, 17)
+    plot_line_statistics(mean, 0, ax, 'black', '-', '45', 0.16)
+    mean, std = calculate_line_statistics(case, 47)
+    plot_line_statistics(mean, 0, ax, 'black', '-.', '135', 0.16)
+    mean, std = calculate_line_statistics(case, 2)
+    plot_line_statistics(mean, 0, ax, 'blue', '-', '0', 0.16)
+    mean, std = calculate_line_statistics(case, 32)
+    plot_line_statistics(mean, 0, ax, 'blue', '-.', '90', 0.16)
+    fig.tight_layout(pad=0.01)
+    plt.savefig(f'figures/{case}_02m.png',
+                format='png',
+                dpi=300)
+    
+    case = 'sp_3x3_CoF_forced'
+    fig, ax = plt.subplots()
+    mean, std = calculate_line_statistics(case, 18)
+    plot_line_statistics(mean, 0, ax, 'black', '-', '45', 0.16)
+    mean, std = calculate_line_statistics(case, 48)
+    plot_line_statistics(mean, 0, ax, 'black', '-.', '135', 0.16)
+    mean, std = calculate_line_statistics(case, 3)
+    plot_line_statistics(mean, 0, ax, 'blue', '-', '0', 0.16)
+    mean, std = calculate_line_statistics(case, 33)
+    plot_line_statistics(mean, 0, ax, 'blue', '-.', '90', 0.16)
+    fig.tight_layout(pad=0.01)
+    plt.savefig(f'figures/{case}_03m.png',
+                format='png',
+                dpi=300)
+
+    case = 'sp_3x3_CoF_forced'
+    fig, ax = plt.subplots()
+    mean, std = calculate_line_statistics(case, 19)
+    plot_line_statistics(mean, 0, ax, 'black', '-', '45', 0.16)
+    mean, std = calculate_line_statistics(case, 49)
+    plot_line_statistics(mean, 0, ax, 'black', '-.', '135', 0.16)
+    mean, std = calculate_line_statistics(case, 4)
+    plot_line_statistics(mean, 0, ax, 'blue', '-', '0', 0.16)
+    mean, std = calculate_line_statistics(case, 34)
+    plot_line_statistics(mean, 0, ax, 'blue', '-.', '90', 0.16)
+    fig.tight_layout(pad=0.01)
+    plt.savefig(f'figures/{case}_04m.png',
                 format='png',
                 dpi=300)
 
@@ -153,7 +273,7 @@ def main():
     mean, std = calculate_line_statistics(case, 35)
     plot_line_statistics(mean, 0, ax, 'blue', '-.', '90', 0.16)
     fig.tight_layout(pad=0.01)
-    plt.savefig(f'figures/{case}.png',
+    plt.savefig(f'figures/{case}_05m.png',
                 format='png',
                 dpi=300)
 
@@ -168,7 +288,7 @@ def main():
     mean, std = calculate_line_statistics(case, 35, 3000)
     plot_line_statistics(mean, 0, ax, 'blue', '-.', '90', 0.16)
     fig.tight_layout(pad=0.01)
-    plt.savefig(f'figures/{case}.png',
+    plt.savefig(f'figures/{case}_05m.png',
                 format='png',
                 dpi=300)
 
